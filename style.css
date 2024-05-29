@@ -18,14 +18,14 @@ header {
 }
 
 header img {
-    height: 80%;
+    height: 67%;
 }
 
 main {
     max-width: 1920px;
     height: 100vh;
     background-color: rgb(32, 32, 32);
-    color: brown;
+    color: rgb(46, 46, 46);
 }
 
 #search-input {
@@ -42,25 +42,114 @@ main {
 }
 
 #pokemon-box {
-    height: 300px;
+    height: 270px;
     width: 200px;
-    background-color: blanchedalmond;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     border-radius: 10px;
     margin: 8px;
+    padding-bottom: 16px;
+}
+
+#pokemon-box:hover{
+transform: scale(1.02);
+cursor: pointer;
 }
 
 #pokemon-box img{
-    height: 40%;
-}
-
-#pokemon-box img:hover{
-    transform: scale(1.1);
+    height: 50%;
 }
 
 footer {
     height: 100px;
 }
 
+.bg-grass {
+    background-color: rgb(186, 255, 84);
+}
+.type-field-grass {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(102, 173, 102);
+}
+
+.bg-fire {
+    background-color: rgb(248, 107, 107);
+}
+.type-field-fire {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(161, 78, 78);
+}
+
+.bg-water {
+    background-color: rgb(147, 252, 217);
+}
+.type-field-water {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(61, 194, 150);
+}
+
+.bg-bug {
+    background-color: rgb(203, 255, 143);
+}
+.type-field-bug {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(187, 162, 94);
+}
+
+.bg-normal {
+    background-color: rgb(252, 229, 195);
+}
+.type-field-normal {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(151, 139, 121);
+}
+
+.bg-poison {
+    background-color: rgb(75, 255, 135);
+}
+.type-field-poison {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(104, 161, 124);
+}
+
+.bg-electric {
+    background-color: rgb(255, 255, 107);
+}
+.type-field-electric {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(197, 180, 27);
+}
+
+.bg-ground {
+    background-color: rgb(197, 132, 46) !important;
+}
+.type-field-ground {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(114, 72, 17);
+}
+
+.row-sb {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+}
