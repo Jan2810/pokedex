@@ -4,12 +4,12 @@
 
 body {
     margin: 0;
-    background-color: black;
+    background-color: rgb(32, 32, 32);
 }
 
 header {
     height: 200px;
-    background-color: black;
+    background-color: rgb(32, 32, 32);
     color: white;
     display: flex;
     align-items: center;
@@ -24,13 +24,14 @@ header img {
 main {
     max-width: 1920px;
     height: 100vh;
-    background-color: black;
+    background-color: rgb(32, 32, 32);
+    color: brown;
 }
 
 #search-input {
     width: 300px;
-    border-radius: 25px;
-    padding: 16px;
+    border-radius: 10px;
+    padding: 4px 10px;
     font-size: 20px;
 }
 
