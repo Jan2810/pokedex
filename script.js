@@ -8,7 +8,13 @@ function init() {
     fetchPokemonData();
 }
 
+function closeIntro() {
+    document.getElementById('intro').classList.add('d-none');
+    document.getElementById('body').classList.remove('no-scroll');
+}
+
 async function fetchPokemonData() {
+    disableLoadButton();
     for (let i = index; i < index +30; i++) {
         let response = await fetch(BASE_URL + `pokemon/${i+1}`);
         let responseAsJson = await response.json();
@@ -37,6 +43,17 @@ function showPokemon() {
             </div>
         `
     }
+    document.getElementById('loading-gif').classList.add('d-none');
+    document.getElementById('loading-button').classList.remove('d-none');
+}
+
+function disableLoadButton() {
+    document.getElementById('loading-button').classList.add('d-none');
+    document.getElementById('loading-gif').classList.remove('d-none');
+}
+
+function enableLoadButton() {
+    
 }
 
 

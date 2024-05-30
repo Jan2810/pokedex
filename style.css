@@ -2,9 +2,39 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     background-color: rgb(32, 32, 32);
+    font-family: 'Roboto Mono';
+}
+
+#intro {
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.96);
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 24px;
+}
+
+#intro img {
+    height: 350px;
+}
+
+#intro h1 {
+    font-family: 'Honk';
+    font-size: 48px;
 }
 
 header {
@@ -13,7 +43,8 @@ header {
     color: white;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    flex-direction: column;
     padding: 0 80px;
     max-width: 1920px;
 }
@@ -22,22 +53,37 @@ header img {
     height: 67%;
 }
 
+.headline {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    gap: 24px;
+}
+
+.headline h1 {
+    font-family: 'Honk';
+    font-size: 116px;
+}
+
 main {
     max-width: 1920px;
     height: 100%;
     margin-bottom: 16px;
     background-color: rgb(32, 32, 32);
-    color:rgb(46, 46, 46);
+    color: black;
+    font-size: 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 #search {
-    width: 300px;
+    width: 350px;
     border-radius: 10px;
-    padding: 4px 10px;
-    font-size: 20px;
+    padding: 8px 16px;
+    font-size: 16px;
+    margin-bottom: 24px;
 }
 
 #pokemon-section {
@@ -48,7 +94,7 @@ main {
 }
 
 #pokemon-box {
-    height: 270px;
+    height: 300px;
     width: 200px;
     display: flex;
     flex-direction: column;
@@ -59,17 +105,22 @@ main {
     margin: 8px;
 }
 
-#pokemon-box h3{
+#pokemon-box h3 {
     margin-top: 16px;
+    font-size: 18px;
 }
 
-#pokemon-box:hover{
-transform: scale(1.02);
-cursor: pointer;
+#pokemon-box:hover {
+    transform: scale(1.02);
+    cursor: pointer;
 }
 
-#pokemon-box img{
+#pokemon-box img {
     height: 50%;
+}
+
+#pokemon-box img:hover {
+    transform: scale(1.1);
 }
 
 .load-more-button {
@@ -86,9 +137,21 @@ cursor: pointer;
     cursor: pointer;
 }
 
+#loading-gif {
+    height: 96px;
+}
+
 footer {
     height: 200px;
     background-color: white;
+}
+
+.d-none {
+    display: none !important;
+}
+
+.no-scroll {
+    overflow: hidden;
 }
 
 .row-sb {

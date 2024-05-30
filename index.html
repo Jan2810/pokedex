@@ -12,17 +12,28 @@
     <link rel="stylesheet" href="type-design.css">
 </head>
 
-<body onload="init()">
+<body onload="init()" id="body" class="no-scroll">
+
+    <div id="intro" class="" onclick="closeIntro()">
+        <img src="./assets/img/ash.gif" alt="">
+        <h1>Welcome to my<br>Pokedex</h1>
+    </div>
+
+    <div></div>
 
     <header>
-        <img src="./assets/img/ash.gif" alt="">
-        <input id="search" onkeydown="startFilterPokemon()" type="text" placeholder="search Pokemon...">
+        <div class="headline">
+            <h1>Pokedex</h1>
+            <img src="./assets/img/ash.gif" alt="">
+        </div>
     </header>
 
 
     <main>
+        <input id="search" onkeydown="startFilterPokemon()" type="text" placeholder="search Pokemon...">
         <div id="pokemon-section"></div>
-        <button class="load-more-button" onclick="fetchPokemonData()">load more...</button>
+        <button id="loading-button" class="load-more-button" onclick="fetchPokemonData()">load more...</button>
+        <img id="loading-gif" class="d-none" src="./assets/img/pikachu.gif" alt="loading...">
     </main>
 
 
