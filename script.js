@@ -1,5 +1,5 @@
 let pokemonData = [];
-let index = 0
+let index = 0;
 
 const BASE_URL = "https://pokeapi.co/api/v2/"
 
@@ -38,6 +38,7 @@ function showPokemon() {
         `
     }
 }
+
 
 function startFilterPokemon() {
     if (document.getElementById('search').value.length >= 2) {

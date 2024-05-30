@@ -1,0 +1,169 @@
+.bg-grass {
+    background-color: rgb(186, 255, 84);
+}
+.type-field-grass {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(102, 173, 102);
+}
+
+.bg-fire {
+    background-color: rgb(248, 107, 107);
+}
+.type-field-fire {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(161, 78, 78);
+}
+
+.bg-water {
+    background-color: rgb(147, 252, 217);
+}
+.type-field-water {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(61, 194, 150);
+}
+
+.bg-bug {
+    background-color: rgb(203, 255, 143);
+}
+.type-field-bug {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(187, 162, 94);
+}
+
+.bg-normal {
+    background-color: rgb(252, 229, 195);
+}
+.type-field-normal {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(201, 184, 159);
+}
+
+.bg-poison {
+    background-color: rgb(75, 255, 135);
+}
+.type-field-poison {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(104, 161, 124);
+}
+
+.bg-electric {
+    background-color: rgb(255, 255, 107);
+}
+.type-field-electric {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(197, 180, 27);
+}
+
+.bg-ground {
+    background-color: rgb(197, 132, 46);
+}
+.type-field-ground {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(150, 96, 25);
+}
+
+.bg-fairy {
+    background-color: rgb(233, 118, 189);
+}
+.type-field-fairy {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(148, 73, 119);
+}
+
+.bg-fighting {
+    background-color: rgb(156, 160, 149);
+}
+.type-field-fighting {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(125, 128, 120);
+}
+
+.bg-psychic {
+    background-color: rgb(174, 100, 224);
+}
+.type-field-psychic {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(125, 71, 158);
+}
+
+.bg-rock {
+    background-color: rgb(172, 163, 111);
+}
+.type-field-rock {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(129, 122, 82);
+}
+
+.bg-ghost {
+    background-color: rgb(131, 51, 221);
+}
+.type-field-ghost {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(87, 57, 196);
+}
+
+.bg-ice {
+    background-color: rgb(119, 216, 255);
+}
+.type-field-ice {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(114, 169, 190);
+}
+
+.bg-dragon {
+    background-color: rgb(255, 136, 90);
+}
+.type-field-dragon {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(190, 107, 74);
+}
+
+.bg-dark {
+    background-color: rgb(61, 63, 202);
+}
+.type-field-dark {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(61, 62, 141);
+}
+
+.bg-steel {
+    background-color: rgb(83, 114, 250);
+}
+.type-field-steel {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(49, 86, 252);
+}
