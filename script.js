@@ -15,8 +15,8 @@ function closeIntro() {
 
 async function fetchPokemonData() {
     disableLoadButton();
-    for (let i = index; i < index +30; i++) {
-        let response = await fetch(BASE_URL + `pokemon/${i+1}`);
+    for (let i = index; i < index + 30; i++) {
+        let response = await fetch(BASE_URL + `pokemon/${i + 1}`);
         let responseAsJson = await response.json();
         pokemonData.push(responseAsJson);
     }
@@ -33,7 +33,7 @@ function showPokemon() {
         let name = pokemonData[i].name;
         let type = pokemonData[i].types[0].type.name;
         pokemonSection.innerHTML += `
-            <div class="bg-${type}" id="pokemon-box">
+            <div onclick="showSinglePokemon(${i})" class="bg-${type}" id="pokemon-box">
                 <div class="row-sb">
                     <h3>${name}</h3>
                     <div>#${i + 1}</div>
@@ -43,8 +43,33 @@ function showPokemon() {
             </div>
         `
     }
-    document.getElementById('loading-gif').classList.add('d-none');
-    document.getElementById('loading-button').classList.remove('d-none');
+    enableLoadButton();
+}
+
+function showSinglePokemon(index) {
+    document.getElementById('single-pokemon-bg').classList.remove('d-none');
+    let name = pokemonData[index].name;
+    let type = pokemonData[index].types[0].type.name;
+    let singlePokemonBG = document.getElementById('single-pokemon-bg')
+    singlePokemonBG.innerHTML = `
+        <div id="single-pokemon-box" class="bg-${type}">
+            <div class="single-pokemon-box-top">
+                <h2>${name}</h2>
+                <div>#${index+1}</div>
+                    <div class="single-pokemon-img">
+                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${index+1}.png" alt="">
+                    </div>
+                </div>
+                <div class="single-pokemon-box-bottom">
+                    <div>stats</div>
+                </div>
+            </div>
+        </div>
+    `
+}
+
+function closeSinglePokemon() {
+    document.getElementById('single-pokemon-bg').classList.add('d-none');
 }
 
 function disableLoadButton() {
@@ -53,9 +78,9 @@ function disableLoadButton() {
 }
 
 function enableLoadButton() {
-    
+    document.getElementById('loading-gif').classList.add('d-none');
+    document.getElementById('loading-button').classList.remove('d-none');
 }
-
 
 function startFilterPokemon() {
     if (document.getElementById('search').value.length >= 2) {
