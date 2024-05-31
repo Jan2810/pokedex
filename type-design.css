@@ -167,3 +167,144 @@
     padding: 4px 8px;
     background-color: rgb(49, 86, 252);
 }
+
+
+
+
+
+
+.single-pokemon-type-field-grass {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(102, 173, 102);
+    width: min-content;
+}
+
+.single-pokemon-type-field-fire {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(161, 78, 78);
+    width: min-content;
+}
+
+.single-pokemon-type-field-water {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(61, 194, 150);
+    width: min-content;
+}
+
+.single-pokemon-type-field-bug {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(187, 162, 94);
+    width: min-content;
+}
+
+.single-pokemon-type-field-normal {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(201, 184, 159);
+    width: min-content;
+}
+
+.single-pokemon-type-field-poison {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(104, 161, 124);
+    width: min-content;
+}
+
+.single-pokemon-type-field-electric {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(197, 180, 27);
+    width: min-content;
+}
+
+.single-pokemon-type-field-ground {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(150, 96, 25);
+    width: min-content;
+}
+
+.single-pokemon-type-field-fairy {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(148, 73, 119);
+    width: min-content;
+}
+
+.single-pokemon-type-field-fighting {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(125, 128, 120);
+    width: min-content;
+}
+
+.single-pokemon-type-field-psychic {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(125, 71, 158);
+    width: min-content;
+}
+
+.single-pokemon-type-field-rock {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(129, 122, 82);
+    width: min-content;
+}
+
+.single-pokemon-type-field-ghost {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(87, 57, 196);
+    width: min-content;
+}
+
+.single-pokemon-type-field-ice {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(114, 169, 190);
+    width: min-content;
+}
+
+.single-pokemon-type-field-dragon {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(190, 107, 74);
+    width: min-content;
+}
+
+.single-pokemon-type-field-dark {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(61, 62, 141);
+    width: min-content;
+}
+
+.single-pokemon-type-field-steel {
+    border: hidden;
+    border-radius: 10px;
+    padding: 4px 8px;
+    background-color: rgb(49, 86, 252);
+    width: min-content;
+}
