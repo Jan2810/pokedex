@@ -197,6 +197,12 @@ h2 {
     object-fit: cover;
 }
 
+#stats-content {
+    height: 300px; /* oder jede andere Höhe, die du möchtest */
+    position: relative;
+    padding-bottom: 12px;
+}
+
 .arrow-buttons {
     height: 80px;
     z-index: 10;

@@ -75,18 +75,41 @@ function showSinglePokemon(i) {
                 </div>
 
                 <div id="stats-content">
-                    <div>${stats[0].stat.name} : ${stats[0].base_stat}</div>
-                    <div>${stats[1].stat.name} : ${stats[1].base_stat}</div>
-                    <div>${stats[2].stat.name} : ${stats[2].base_stat}</div>
-                    <div>${stats[3].stat.name} : ${stats[3].base_stat}</div>
-                    <div>${stats[4].stat.name} : ${stats[4].base_stat}</div>
-                    <div>${stats[5].stat.name} : ${stats[5].base_stat}</div>
+                    <canvas id="statsChart"></canvas>
                 </div>
 
             </div>
         </div>
         <img class="arrow-buttons" onclick="nextPokemon(${i}); event.stopPropagation();" src="./assets/icons/arrow-right-icon.png" alt="next pokemon">
-    `
+    `;
+    createStatsChart(stats);
+}
+
+function createStatsChart(stats) {
+    const ctx = document.getElementById('statsChart').getContext('2d');
+    const chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: stats.map(stat => stat.stat.name),
+            datasets: [{
+                label: 'Base Stats',
+                data: stats.map(stat => stat.base_stat),
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
 }
 
 function lastPokemon(id) {
