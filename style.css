@@ -191,16 +191,33 @@ h2 {
 }
 
 .single-pokemon-img img{
-    margin-top: 30vh;
-    height: 30%;
+    margin-top: 28vh;
+    height: 33%;
     position: absolute;
     object-fit: cover;
 }
 
+.stats-header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.stats-header img {
+    height: 40px;
+    margin-right: 16px;
+    margin-left: 16px;
+}
+
+.stats-header img:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
 #stats-content {
-    height: 300px; /* oder jede andere Höhe, die du möchtest */
+    height: 100%; /* oder jede andere Höhe, die du möchtest */
     position: relative;
-    padding-bottom: 12px;
+    padding-bottom: 40px;
 }
 
 .arrow-buttons {

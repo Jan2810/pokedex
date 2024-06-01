@@ -59,8 +59,8 @@ function showSinglePokemon(i) {
         <div id="single-pokemon-box" class="bg-${type[0].type.name} onclick="event.stopPropagation();">
             <div class="single-pokemon-box-top" onclick="event.stopPropagation();">
                 <div class="row-sb-width100">
-                    <h2>${name}</h2>
-                    <div>#${i+1}</div>
+                    <h2>#${name}</h2>
+                    <h2>#${i+1}</h2>
                 </div>
                 <div class="single-pokemon-type-field-${type[0].type.name}">${type[0].type.name}</div>
                     <div class="single-pokemon-img">
@@ -70,8 +70,9 @@ function showSinglePokemon(i) {
                 <div class="single-pokemon-box-bottom" onclick="event.stopPropagation();">
 
                 <div class="stats-header">
-                    <a href="#">stats 1</a>
-                    <a href="#">stats 2</a>
+                    <img src="./assets/icons/statbar.png" alt="stats">
+                    <img src="./assets/icons/evolution-egg.png" alt="evolutions">
+                    <img src="./assets/icons/info-drawn-grey.png" alt="info">
                 </div>
 
                 <div id="stats-content">
@@ -87,6 +88,7 @@ function showSinglePokemon(i) {
 
 function createStatsChart(stats) {
     const ctx = document.getElementById('statsChart').getContext('2d');
+    
     const chart = new Chart(ctx, {
         type: 'bar',
         data: {
