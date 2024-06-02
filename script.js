@@ -1,7 +1,8 @@
-let pokemonData = [];
-let index = 0;
-
 const BASE_URL = "https://pokeapi.co/api/v2/"
+
+let pokemonData = [];
+let pokemonEvolutions = [];
+let index = 0;
 
 
 function init() {
@@ -26,6 +27,13 @@ async function fetchPokemonData() {
     index += 30;
 }
 
+async function fetchPokemonEvolutions(id) {
+    let response = await fetch(BASE_URL + `evolution-chain/${id}`);
+    let responseAsJson = await response.json();
+    return responseAsJson;
+    console.log(responseAsJson);
+}
+
 function showPokemon() {
     let pokemonSection = document.getElementById('pokemon-section');
     pokemonSection.innerHTML = '';
@@ -33,17 +41,31 @@ function showPokemon() {
     for (let i = 0; i < pokemonData.length; i++) {
         let name = pokemonData[i].name;
         let type = pokemonData[i].types;
-        pokemonSection.innerHTML += `
+        if (pokemonData[i].types.length > 1) {
+            pokemonSection.innerHTML += `
+        <div onclick="showSinglePokemon(${i})" class="bg-${type[0].type.name}" id="pokemon-box">
+            <div class="row-sb">
+                <h3>${name}</h3>
+                <div>#${i + 1}</div>
+            </div>
+            <img id="pokemon-box-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${i + 1}.png">
+            <div class="row-sa">
+                <div class="type-field type-field-${type[0].type.name}">${type[0].type.name}</div>
+                <div class="type-field type-field-${type[1].type.name}">${type[1].type.name}</div>
+            </div>
+        </div>`
+        } else {
+            pokemonSection.innerHTML += `
             <div onclick="showSinglePokemon(${i})" class="bg-${type[0].type.name}" id="pokemon-box">
                 <div class="row-sb">
                     <h3>${name}</h3>
                     <div>#${i + 1}</div>
                 </div>
                 <img id="pokemon-box-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${i + 1}.png">
-                <div class="type-field-${type[0].type.name}">${type[0].type.name}</div>
-            </div>
-        `
-    }
+                <div class="type-field type-field-${type[0].type.name}">${type[0].type.name}</div>
+            </div>`
+        };
+    };
     enableLoadButton();
 }
 
@@ -54,24 +76,24 @@ function showSinglePokemon(i) {
     let type = pokemonData[i].types;
     let stats = pokemonData[i].stats;
     let singlePokemonBG = document.getElementById('single-pokemon-bg')
-    singlePokemonBG.innerHTML = `
+        singlePokemonBG.innerHTML = `
         <img id="button-left "class="arrow-buttons" onclick="lastPokemon(${i}); event.stopPropagation();" src="./assets/icons/arrow-left-icon.png" alt="last pokemon">
         <div id="single-pokemon-box" class="bg-${type[0].type.name} onclick="event.stopPropagation();">
             <div class="single-pokemon-box-top" onclick="event.stopPropagation();">
                 <div class="row-sb-width100">
                     <h2>#${name}</h2>
-                    <h2>#${i+1}</h2>
+                    <h2>#${i + 1}</h2>
                 </div>
-                <div class="single-pokemon-type-field-${type[0].type.name}">${type[0].type.name}</div>
+    
                     <div class="single-pokemon-img">
-                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${i+1}.png" alt="">
+                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${i + 1}.png" alt="">
                     </div>
                 </div>
                 <div class="single-pokemon-box-bottom" onclick="event.stopPropagation();">
 
                 <div class="stats-header">
                     <img src="./assets/icons/statbar.png" alt="stats">
-                    <img src="./assets/icons/evolution-egg.png" alt="evolutions">
+                    <img onclick="fetchPokemonEvolutions(${i})" src="./assets/icons/evolution-egg.png" alt="evolutions">
                     <img src="./assets/icons/info-drawn-grey.png" alt="info">
                 </div>
 
@@ -88,7 +110,6 @@ function showSinglePokemon(i) {
 
 function createStatsChart(stats) {
     const ctx = document.getElementById('statsChart').getContext('2d');
-    
     const chart = new Chart(ctx, {
         type: 'bar',
         data: {
@@ -117,8 +138,6 @@ function createStatsChart(stats) {
 function lastPokemon(id) {
     if (id > 0) {
         showSinglePokemon(id - 1);
-    } else {
-        showSinglePokemon(id);
     }
 }
 
