@@ -30,8 +30,8 @@ async function fetchPokemonData() {
 async function fetchPokemonEvolutions(id) {
     let response = await fetch(BASE_URL + `evolution-chain/${id}`);
     let responseAsJson = await response.json();
-    return responseAsJson;
     console.log(responseAsJson);
+    return responseAsJson;
 }
 
 function showPokemon() {
@@ -40,12 +40,13 @@ function showPokemon() {
 
     for (let i = 0; i < pokemonData.length; i++) {
         let name = pokemonData[i].name;
+        let modName = name[0].toUpperCase() + name.slice(1);
         let type = pokemonData[i].types;
-        if (pokemonData[i].types.length > 1) {
+        if (type.length > 1) {
             pokemonSection.innerHTML += `
         <div onclick="showSinglePokemon(${i})" class="bg-${type[0].type.name}" id="pokemon-box">
             <div class="row-sb">
-                <h3>${name}</h3>
+                <h3>${modName}</h3>
                 <div>#${i + 1}</div>
             </div>
             <img id="pokemon-box-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${i + 1}.png">
@@ -58,7 +59,7 @@ function showPokemon() {
             pokemonSection.innerHTML += `
             <div onclick="showSinglePokemon(${i})" class="bg-${type[0].type.name}" id="pokemon-box">
                 <div class="row-sb">
-                    <h3>${name}</h3>
+                    <h3>${modName}</h3>
                     <div>#${i + 1}</div>
                 </div>
                 <img id="pokemon-box-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${i + 1}.png">
@@ -73,6 +74,7 @@ function showSinglePokemon(i) {
     document.getElementById('single-pokemon-bg').classList.remove('d-none');
     disableScrollbarFromBody();
     let name = pokemonData[i].name;
+    let modName = name[0].toUpperCase() + name.slice(1);
     let type = pokemonData[i].types;
     let stats = pokemonData[i].stats;
     let singlePokemonBG = document.getElementById('single-pokemon-bg')
@@ -81,10 +83,9 @@ function showSinglePokemon(i) {
         <div id="single-pokemon-box" class="bg-${type[0].type.name} onclick="event.stopPropagation();">
             <div class="single-pokemon-box-top" onclick="event.stopPropagation();">
                 <div class="row-sb-width100">
-                    <h2>#${name}</h2>
+                    <h2>${modName}</h2>
                     <h2>#${i + 1}</h2>
                 </div>
-    
                     <div class="single-pokemon-img">
                         <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${i + 1}.png" alt="">
                     </div>
@@ -92,9 +93,9 @@ function showSinglePokemon(i) {
                 <div class="single-pokemon-box-bottom" onclick="event.stopPropagation();">
 
                 <div class="stats-header">
-                    <img src="./assets/icons/statbar.png" alt="stats">
+                    <img onclick="showStats(${i})"src="./assets/icons/statbar.png" alt="stats">
                     <img onclick="fetchPokemonEvolutions(${i})" src="./assets/icons/evolution-egg.png" alt="evolutions">
-                    <img src="./assets/icons/info-drawn-grey.png" alt="info">
+                    <img onclick="showInfos(${i})" src="./assets/icons/info-drawn-grey.png" alt="info">
                 </div>
 
                 <div id="stats-content">
@@ -103,7 +104,7 @@ function showSinglePokemon(i) {
 
             </div>
         </div>
-        <img class="arrow-buttons" onclick="nextPokemon(${i}); event.stopPropagation();" src="./assets/icons/arrow-right-icon.png" alt="next pokemon">
+        <img id="" class="arrow-buttons" onclick="nextPokemon(${i}); event.stopPropagation();" src="./assets/icons/arrow-right-icon.png" alt="next pokemon">
     `;
     createStatsChart(stats);
 }
@@ -130,9 +131,88 @@ function createStatsChart(stats) {
                 y: {
                     beginAtZero: true
                 }
-            }
+            },
         }
     });
+}
+
+function showStats(id) {
+    let statsContent = document.getElementById('stats-content');
+    let stats = pokemonData[id].stats;
+    statsContent.innerHTML = `<canvas id="statsChart"></canvas>`;
+    createStatsChart(stats);
+}
+
+function showInfos(id) {
+    let info = pokemonData[id];
+    let statsContent = document.getElementById('stats-content');
+    if (info.abilities.length < 2) {
+        statsContent.innerHTML = `
+        <table class="stats-table">
+        <tr>
+            <th>Attribute</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>Height</td>
+            <td>${info.height} inch</td>
+        </tr>
+        <tr>
+            <td>Weight</td>
+            <td>${info.weight} pound</td>
+        </tr>
+        <tr>
+            <td>Base Experience</td>
+            <td>${info.base_experience}</td>
+        </tr>
+        <tr>
+            <td>Abilities</td>
+            <td id="abilities">${info.abilities[0].ability.name}</td>
+        </tr>
+        <tr>
+            <td>Moves</td>
+            <td>${info.moves[0].move.name}, ${info.moves[1].move.name}</td>
+        </tr>
+        <tr>
+            <td>Type</td>
+            <td>${info.types[0].type.name}</td>
+        </tr>
+    </table> 
+    `
+    } else {
+    statsContent.innerHTML = `
+        <table class="stats-table">
+        <tr>
+            <th>Attribute</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>Height</td>
+            <td>${info.height} inch</td>
+        </tr>
+        <tr>
+            <td>Weight</td>
+            <td>${info.weight} pound</td>
+        </tr>
+        <tr>
+            <td>Base Experience</td>
+            <td>${info.base_experience}</td>
+        </tr>
+        <tr>
+            <td>Abilities</td>
+            <td id="abilities">${info.abilities[0].ability.name}, ${info.abilities[1].ability.name}</td>
+        </tr>
+        <tr>
+            <td>Moves</td>
+            <td>${info.moves[0].move.name}, ${info.moves[1].move.name}</td>
+        </tr>
+        <tr>
+            <td>Type</td>
+            <td>${info.types[0].type.name}</td>
+        </tr>
+    </table> 
+    `
+    }
 }
 
 function lastPokemon(id) {
@@ -142,10 +222,10 @@ function lastPokemon(id) {
 }
 
 function nextPokemon(id) {
-    if (id < pokemonData.length) {
+    if (id < pokemonData.length -1) {
         showSinglePokemon(id + 1);
     } else {
-        showSinglePokemon(id);
+        fetchPokemonData();
     }
 }
 
@@ -173,7 +253,7 @@ function enableScrollbarFromBody() {
 }
 
 function startFilterPokemon() {
-    if (document.getElementById('search').value.length >= 2) {
+    if (document.getElementById('search').value.length >= 3) {
         filterPokemon();
     }
 }
@@ -182,23 +262,4 @@ function filterPokemon() {
     let search = document.getElementById('search').value;
     search = search.toLowerCase();
     console.log(search);
-    showPokemon();
-
-    let pokemonSection = document.getElementById('pokemon-section');
-    pokemonSection.innerHTML = '';
-
-    for (let i = 0; i < pokemonData.length; i++) {
-        let name = pokemonData[i].name;
-        let type = pokemonData[i].types[0].type.name;
-        if (name.toLowerCase().includes(search)) {
-            pokemonSection.innerHTML += `
-            <div id="pokemon-box">
-                <h3>${name}</h3>
-                <div>#${i + 1}</div>
-                <img id="pokemon-box-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${i + 1}.png"
-                <div>${type}</div>
-            </div>
-        `
-        }
-    }
 }
