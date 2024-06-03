@@ -34,7 +34,7 @@ async function fetchPokemonEvolutions(id) {
     return responseAsJson;
 }
 
-function showPokemon(pokemon) {
+function showPokemon() {
     let pokemonSection = document.getElementById('pokemon-section');
     pokemonSection.innerHTML = '';
 
@@ -63,6 +63,43 @@ function showPokemon(pokemon) {
                     <div>#${i + 1}</div>
                 </div>
                 <img id="pokemon-box-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${i + 1}.png">
+                <div class="type-field type-field-${type[0].type.name}">${type[0].type.name}</div>
+            </div>`
+        };
+    };
+    enableLoadButton();
+}
+
+function showFilteredPokemon(pokemon) {
+    let pokemonSection = document.getElementById('pokemon-section');
+    pokemonSection.innerHTML = '';
+
+    for (let i = 0; i < pokemon.length; i++) {
+        let name = pokemon[i].name;
+        let modName = name[0].toUpperCase() + name.slice(1);
+        let type = pokemon[i].types;
+        let id = pokemon[i].id;
+        if (type.length > 1) {
+            pokemonSection.innerHTML += `
+        <div onclick="showSinglePokemon(${id})" class="bg-${type[0].type.name}" id="pokemon-box">
+            <div class="row-sb">
+                <h3>${modName}</h3>
+                <div>#${id}</div>
+            </div>
+            <img id="pokemon-box-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png">
+            <div class="row-sa">
+                <div class="type-field type-field-${type[0].type.name}">${type[0].type.name}</div>
+                <div class="type-field type-field-${type[1].type.name}">${type[1].type.name}</div>
+            </div>
+        </div>`
+        } else {
+            pokemonSection.innerHTML += `
+            <div onclick="showSinglePokemon(${id})" class="bg-${type[0].type.name}" id="pokemon-box">
+                <div class="row-sb">
+                    <h3>${modName}</h3>
+                    <div>#${id}</div>
+                </div>
+                <img id="pokemon-box-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png">
                 <div class="type-field type-field-${type[0].type.name}">${type[0].type.name}</div>
             </div>`
         };
@@ -256,6 +293,8 @@ function enableScrollbarFromBody() {
 function startFilterPokemon() {
     if (document.getElementById('search').value.length >= 3) {
         filterPokemon();
+    } else {
+        showPokemon();
     }
 }
 
@@ -263,5 +302,5 @@ function filterPokemon() {
     let search = document.getElementById('search').value.toLowerCase();
     let filteredPokemon = pokemonData.filter(pokemon => pokemon.name.toLowerCase().includes(search));
     console.log(filteredPokemon);
-    showPokemon(filteredPokemon);
+    showFilteredPokemon(filteredPokemon);
 }
