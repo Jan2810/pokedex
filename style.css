@@ -138,12 +138,15 @@ main {
 }
 
 .load-more-button {
-    width: 300px;
+    width: 418px;
     padding: 16px 40px;
+    margin-top: 16px;
     background-color: rgb(47, 167, 214);
     border-radius: 10px;
     color: white;
     border: hidden;
+    font-family: 'Roboto Mono';
+    font-size: large;
 }
 
 .load-more-button:hover {
@@ -253,7 +256,7 @@ table {
     height: 50px;
     border-collapse: collapse;
     background-color: #fff;
-    margin: 20px 0px;
+    margin: 8px 0px;
 }
 th, td {
     padding: 2px;
@@ -283,23 +286,52 @@ td {
 }
 
 footer {
-    height: 200px;
+    height: 150px;
+    max-width: 1920px;
+    width: 100%;
     background-color: rgb(32, 32, 32);
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
-footer img{
-    height: 50%;
+footer img {
+    height: 80px;
     margin-left: 32px;
     margin-right: 32px;
+    border-radius: 50px;
+}
+
+footer img:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+#git-logo img{
+    background-color: rgb(233, 241, 244);
 }
 
 footer a {
     text-decoration: none;
-    color: white;
+    color: lightgrey;
 }
+
+footer a:hover {
+    color: rgb(150, 150, 150);
+}
+
+.imprint-links {
+    display: flex;
+    flex-direction: row;
+}
+
+.seperator {
+    height: 20px;
+    width: 2px;
+    margin: 0 40px;
+    background-color: lightgray;
+}
+
 
 ::-webkit-scrollbar {
     width: 20px;

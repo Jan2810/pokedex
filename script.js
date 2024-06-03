@@ -34,7 +34,7 @@ async function fetchPokemonEvolutions(id) {
     return responseAsJson;
 }
 
-function showPokemon() {
+function showPokemon(pokemon) {
     let pokemonSection = document.getElementById('pokemon-section');
     pokemonSection.innerHTML = '';
 
@@ -104,6 +104,7 @@ function showSinglePokemon(i) {
 
             </div>
         </div>
+        <img id="button-left-responsive" class="arrow-buttons d-none" onclick="lastPokemon(${i}); event.stopPropagation();" src="./assets/icons/arrow-left-icon.png" alt="last pokemon">
         <img id="" class="arrow-buttons" onclick="nextPokemon(${i}); event.stopPropagation();" src="./assets/icons/arrow-right-icon.png" alt="next pokemon">
     `;
     createStatsChart(stats);
@@ -259,7 +260,8 @@ function startFilterPokemon() {
 }
 
 function filterPokemon() {
-    let search = document.getElementById('search').value;
-    search = search.toLowerCase();
-    console.log(search);
+    let search = document.getElementById('search').value.toLowerCase();
+    let filteredPokemon = pokemonData.filter(pokemon => pokemon.name.toLowerCase().includes(search));
+    console.log(filteredPokemon);
+    showPokemon(filteredPokemon);
 }
