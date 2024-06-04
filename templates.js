@@ -29,6 +29,7 @@ function createShowPokemonHTML(i) {
     }
 }
 
+
 function createFilteredPokemonHTML(pokemon,i) {
     let name = pokemon[i].name;
     let modName = name[0].toUpperCase() + name.slice(1);
@@ -61,12 +62,13 @@ function createFilteredPokemonHTML(pokemon,i) {
     };
 }
 
+
 function createSinglePokemon(i) {
     let name = pokemonData[i].name;
     let modName = name[0].toUpperCase() + name.slice(1);
     let type = pokemonData[i].types;
     return`
-        <img id="arrow-left" class="arrow-buttons" onclick="lastPokemon(${i}); event.stopPropagation();" src="./assets/icons/arrow-left-icon.png" alt="last pokemon">
+        <img id="arrow-left" class="arrow-buttons" onclick="lastPokemon(${i}); greyscaleArrow(${i}); event.stopPropagation();" src="./assets/icons/arrow-left-icon.png" alt="last pokemon">
         <div id="single-pokemon-box" class="bg-${type[0].type.name} onclick="event.stopPropagation();">
             <div class="single-pokemon-box-top" onclick="event.stopPropagation();">
                 <div class="row-sb-width100">
@@ -93,12 +95,13 @@ function createSinglePokemon(i) {
         </div>
         <img id="arrow-right" class="arrow-buttons" onclick="nextPokemon(${i}); event.stopPropagation();" src="./assets/icons/arrow-right-icon.png" alt="next pokemon">
         <div class="responsive-arrows">
-            <img id="arrow-left-responsive" class="arrow-buttons" onclick="lastPokemon(${i}); event.stopPropagation();" src="./assets/icons/arrow-left-icon.png" alt="last pokemon">
+            <img id="arrow-left-responsive" class="arrow-buttons" onclick="lastPokemon(${i}); greyscaleArrow(${i}); event.stopPropagation();" src="./assets/icons/arrow-left-icon.png" alt="last pokemon">
             <img class="arrow-buttons" onclick="closeSinglePokemon()" src="./assets/icons/close.png" alt="close">
             <img id="arrow-right-responsive" class="arrow-buttons" onclick="nextPokemon(${i}); event.stopPropagation();" src="./assets/icons/arrow-right-icon.png" alt="next pokemon">
         </div>
     `;
 }
+
 
 function createStatsChart(stats) {
     const ctx = document.getElementById('statsChart').getContext('2d');
@@ -126,6 +129,7 @@ function createStatsChart(stats) {
         }
     });
 }
+
 
 function createShowInfoHTML(id) {
     let info = pokemonData[id];
@@ -198,25 +202,38 @@ function createShowInfoHTML(id) {
     }
 }
 
+
 function closeSinglePokemon() {
     enableScrollbarFromBody();
     document.getElementById('single-pokemon-bg').classList.add('d-none');
 }
+
 
 function disableLoadButton() {
     document.getElementById('loading-button').classList.add('d-none');
     document.getElementById('loading-gif').classList.remove('d-none');
 }
 
+
 function enableLoadButton() {
     document.getElementById('loading-gif').classList.add('d-none');
     document.getElementById('loading-button').classList.remove('d-none');
 }
 
+
 function disableScrollbarFromBody() {
     document.getElementById('body').classList.add('no-scroll');
 }
 
+
 function enableScrollbarFromBody() {
     document.getElementById('body').classList.remove('no-scroll');
+}
+
+
+function greyscaleArrow(id) {
+    if (id === 1) {
+        document.getElementById('arrow-left').classList.add('greyscale');
+        document.getElementById('arrow-left-responsive').classList.add('greyscale');
+    }
 }

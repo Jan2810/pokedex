@@ -5,15 +5,18 @@ let pokemonEvolutions = [];
 let offset = 0;
 
 
+
 function init() {
     fetchPokemonData();
     setTimeout(closeIntro, 2700);
 }
 
+
 function closeIntro() {
     document.getElementById('intro').classList.add('d-none');
     enableScrollbarFromBody();
 }
+
 
 async function fetchPokemonData() {
     disableLoadButton();
@@ -22,10 +25,10 @@ async function fetchPokemonData() {
         let responseAsJson = await response.json();
         pokemonData.push(responseAsJson);
     }
-    console.log(pokemonData)
     showPokemon();
     offset += 30;
 }
+
 
 function showPokemon() {
     let pokemonSection = document.getElementById('pokemon-section');
@@ -37,6 +40,7 @@ function showPokemon() {
     enableLoadButton();
 }
 
+
 function showFilteredPokemon(pokemon) {
     let pokemonSection = document.getElementById('pokemon-section');
     pokemonSection.innerHTML = '';
@@ -46,6 +50,7 @@ function showFilteredPokemon(pokemon) {
     };
     enableLoadButton();
 }
+
 
 function showSinglePokemon(i) {
     document.getElementById('single-pokemon-bg').classList.remove('d-none');
@@ -58,6 +63,7 @@ function showSinglePokemon(i) {
     createStatsChart(stats);
 }
 
+
 function showStats(id) {
     let statsContent = document.getElementById('stats-content');
     let stats = pokemonData[id].stats;
@@ -65,21 +71,26 @@ function showStats(id) {
     createStatsChart(stats);
 }
 
+
 function showInfos(id) {
     let statsContent = document.getElementById('stats-content');
         statsContent.innerHTML = createShowInfoHTML(id);
 }
 
+
 function playSound(soundUrl) {
     let audio = new Audio (soundUrl);
+    audio.volume = 0.5;
     audio.play();
 }
+
 
 function lastPokemon(id) {
     if (id > 0) {
         showSinglePokemon(id - 1);
     }
 }
+
 
 function nextPokemon(id) {
     if (id < pokemonData.length -1) {
@@ -89,6 +100,7 @@ function nextPokemon(id) {
     }
 }
 
+
 function startFilterPokemon() {
     if (document.getElementById('search').value.length >= 3) {
         filterPokemon();
@@ -97,9 +109,9 @@ function startFilterPokemon() {
     }
 }
 
+
 function filterPokemon() {
     let search = document.getElementById('search').value.toLowerCase();
     let filteredPokemon = pokemonData.filter(pokemon => pokemon.name.toLowerCase().includes(search));
-    console.log(filteredPokemon);
     showFilteredPokemon(filteredPokemon);
 }

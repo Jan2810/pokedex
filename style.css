@@ -10,6 +10,7 @@ body {
     margin: 0;
     background-color: rgb(32, 32, 32);
     font-family: 'Roboto Mono';
+    transition: 100ms;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -49,7 +50,6 @@ header {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 0 80px;
     max-width: 1920px;
 }
 
@@ -382,4 +382,8 @@ footer a:hover {
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
+}
+
+.greyscale {
+    filter: grayscale(100%);
 }
