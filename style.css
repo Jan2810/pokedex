@@ -211,7 +211,7 @@ h2 {
 }
 
 .single-pokemon-img img{
-    height: 30%;
+    height: 250px;
     position: absolute;
     object-fit: cover;
     margin-top: 200px;
