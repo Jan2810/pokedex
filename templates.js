@@ -63,7 +63,7 @@ function createFilteredPokemonHTML(pokemon,i) {
 }
 
 
-function createSinglePokemon(i) {
+function createSinglePokemonHTML(i) {
     let name = pokemonData[i].name;
     let modName = name[0].toUpperCase() + name.slice(1);
     let type = pokemonData[i].types;
@@ -232,7 +232,7 @@ function enableScrollbarFromBody() {
 
 
 function greyscaleArrow(id) {
-    if (id === 1) {
+    if (id == 1) {
         document.getElementById('arrow-left').classList.add('greyscale');
         document.getElementById('arrow-left-responsive').classList.add('greyscale');
     }

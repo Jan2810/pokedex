@@ -58,9 +58,9 @@ function showSinglePokemon(i) {
 
     let stats = pokemonData[i].stats;
     let singlePokemonBG = document.getElementById('single-pokemon-bg')
-        singlePokemonBG.innerHTML = createSinglePokemon(i);
-
+    singlePokemonBG.innerHTML = createSinglePokemonHTML(i);
     createStatsChart(stats);
+    greyscaleArrow(i +=1);
 }
 
 
@@ -74,12 +74,12 @@ function showStats(id) {
 
 function showInfos(id) {
     let statsContent = document.getElementById('stats-content');
-        statsContent.innerHTML = createShowInfoHTML(id);
+    statsContent.innerHTML = createShowInfoHTML(id);
 }
 
 
 function playSound(soundUrl) {
-    let audio = new Audio (soundUrl);
+    let audio = new Audio(soundUrl);
     audio.volume = 0.5;
     audio.play();
 }
@@ -93,7 +93,7 @@ function lastPokemon(id) {
 
 
 function nextPokemon(id) {
-    if (id < pokemonData.length -1) {
+    if (id < pokemonData.length - 1) {
         showSinglePokemon(id + 1);
     } else {
         fetchPokemonData();
