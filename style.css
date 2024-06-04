@@ -285,6 +285,10 @@ td {
     transform: scale(1.1);
 }
 
+.responsive-arrows {
+    display: none;
+}
+
 footer {
     height: 150px;
     max-width: 1920px;
@@ -332,7 +336,6 @@ footer a:hover {
     background-color: lightgray;
 }
 
-
 ::-webkit-scrollbar {
     width: 20px;
 }
@@ -351,9 +354,6 @@ footer a:hover {
     background: rgb(2, 190, 0);
     cursor: pointer;
 }
-
-
-
 
 .d-none {
     display: none !important;

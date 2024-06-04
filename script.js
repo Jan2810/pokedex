@@ -27,13 +27,6 @@ async function fetchPokemonData() {
     index += 30;
 }
 
-async function fetchPokemonEvolutions(id) {
-    let response = await fetch(BASE_URL + `evolution-chain/${id}`);
-    let responseAsJson = await response.json();
-    console.log(responseAsJson);
-    return responseAsJson;
-}
-
 function showPokemon() {
     let pokemonSection = document.getElementById('pokemon-section');
     pokemonSection.innerHTML = '';
@@ -69,6 +62,8 @@ function showPokemon() {
     };
     enableLoadButton();
 }
+
+
 
 function showFilteredPokemon(pokemon) {
     let pokemonSection = document.getElementById('pokemon-section');
@@ -116,7 +111,7 @@ function showSinglePokemon(i) {
     let stats = pokemonData[i].stats;
     let singlePokemonBG = document.getElementById('single-pokemon-bg')
         singlePokemonBG.innerHTML = `
-        <img id="button-left "class="arrow-buttons" onclick="lastPokemon(${i}); event.stopPropagation();" src="./assets/icons/arrow-left-icon.png" alt="last pokemon">
+        <img id="arrow-left" class="arrow-buttons" onclick="lastPokemon(${i}); event.stopPropagation();" src="./assets/icons/arrow-left-icon.png" alt="last pokemon">
         <div id="single-pokemon-box" class="bg-${type[0].type.name} onclick="event.stopPropagation();">
             <div class="single-pokemon-box-top" onclick="event.stopPropagation();">
                 <div class="row-sb-width100">
@@ -131,8 +126,8 @@ function showSinglePokemon(i) {
 
                 <div class="stats-header">
                     <img onclick="showStats(${i})"src="./assets/icons/statbar.png" alt="stats">
-                    <img onclick="fetchPokemonEvolutions(${i})" src="./assets/icons/evolution-egg.png" alt="evolutions">
                     <img onclick="showInfos(${i})" src="./assets/icons/info-drawn-grey.png" alt="info">
+                    <img onclick="playSound('https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/legacy/${i+1}.ogg')" src="./assets/icons/sound.png" alt="sound">
                 </div>
 
                 <div id="stats-content">
@@ -141,8 +136,12 @@ function showSinglePokemon(i) {
 
             </div>
         </div>
-        <img id="button-left-responsive" class="arrow-buttons d-none" onclick="lastPokemon(${i}); event.stopPropagation();" src="./assets/icons/arrow-left-icon.png" alt="last pokemon">
-        <img id="" class="arrow-buttons" onclick="nextPokemon(${i}); event.stopPropagation();" src="./assets/icons/arrow-right-icon.png" alt="next pokemon">
+        <img id="arrow-right" class="arrow-buttons" onclick="nextPokemon(${i}); event.stopPropagation();" src="./assets/icons/arrow-right-icon.png" alt="next pokemon">
+        <div class="responsive-arrows">
+            <img id="arrow-left-responsive" class="arrow-buttons" onclick="lastPokemon(${i}); event.stopPropagation();" src="./assets/icons/arrow-left-icon.png" alt="last pokemon">
+            <img class="arrow-buttons" onclick="closeSinglePokemon()" src="./assets/icons/close.png" alt="close">
+            <img id="arrow-right-responsive" class="arrow-buttons" onclick="nextPokemon(${i}); event.stopPropagation();" src="./assets/icons/arrow-right-icon.png" alt="next pokemon">
+        </div>
     `;
     createStatsChart(stats);
 }
@@ -251,6 +250,11 @@ function showInfos(id) {
     </table> 
     `
     }
+}
+
+function playSound(soundUrl) {
+    let audio = new Audio (soundUrl);
+    audio.play();
 }
 
 function lastPokemon(id) {
