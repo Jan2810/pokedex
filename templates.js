@@ -1,5 +1,5 @@
 /**
- * createShowPokemonHTML() creates the HTML content for showPokemon()
+ * creates the HTML content for showPokemon()
  * 
  * @param {number} i - is the postion from the for loop
  * @returns {string} - the HTML content for the specified pokemon
@@ -37,7 +37,7 @@ function createShowPokemonHTML(i) {
 
 
 /**
- * createFilteredPokemonHTML() creates the HTML content for showFilteredPokemon()
+ * creates the HTML content for showFilteredPokemon()
  * 
  * @param {array} pokemon - is the previously filtered pokemon of the array
  * @param {number} i - is the number of the position in the array
@@ -77,7 +77,7 @@ function createFilteredPokemonHTML(pokemon,i) {
 
 
 /**
- * createSinglePokemonHTML() creates the HTML content for showSinglePokemon()
+ * creates the HTML content for showSinglePokemon()
  * 
  * @param {number} i - is the number of the position in the array
  * @returns {string} - the HTML content for the specified pokemons
@@ -123,7 +123,7 @@ function createSinglePokemonHTML(i) {
 
 
 /**
- * createStatsChart() creates a chart for the stats of the specified pokemon
+ * creates a chart for the stats of the specified pokemon
  * 
  * @param {array} stats - the of the stats in the array
  */
@@ -156,7 +156,7 @@ function createStatsChart(stats) {
 
 
 /**
- * createShowInfoHTML() creates the HTML content for showInfos()
+ * creates the HTML content for showInfos()
  * 
  * @param {number} id - is the number form the speciefied position of the pokemon in the array
  * @returns {string} - the HTML content for the specified infos of the pokemon
